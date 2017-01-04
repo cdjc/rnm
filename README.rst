@@ -5,115 +5,115 @@ Data Model
 ----------
 
 :Account:
-  ChurchId  
-  ChurchUserId  
-  IsOwner  
-  ChurchName  
-  Role  
-  ChurchSubscriptionStatus  
-  SubscriptionTypeId  
-  SubscriptionClassId  
-  ImgUrl  
+  | ChurchId  ``int``
+  | ChurchUserId  ``int``
+  | IsOwner  ``bool``
+  | ChurchName  
+  | Role  
+  | ChurchSubscriptionStatus  
+  | SubscriptionTypeId  ``int``
+  | SubscriptionClassId  ``int``
+  | ImgUrl  
 :AdBanner:
-  Height  
-  Width  
-  ImageUrl  
-CastMetadata:
+  | Height  ``int``
+  | Width  ``int``
+  | ImageUrl
+:CastMetadata:
 :Channel:
-  ChannelID  
-  Name  
-  ChannelTypeID  
-  IsCustom  
-  Sequence  
-  Content  *nullable*  
+  | ChannelID  ``int``
+  | Name  
+  | ChannelTypeID  ``int``
+  | IsCustom  ``bool``
+  | Sequence  ``int``
+  | Content  ``List<Content>`` *nullable*
 :Content:
-  ContentID  
-  Title  
-  ContentTypeID  
-  Summary  
-  ImgUrl  
-  BannerURL  
-  Speaker    *nullable*
-  Publisher    *nullable*
-  Sessions    *nullable*
-  Duration  
+  | ContentID  ``int``
+  | Title  
+  | ContentTypeID  ``int``
+  | Summary  
+  | ImgUrl  
+  | BannerURL  
+  | Speaker  ``Speaker``  *nullable*
+  | Publisher  ``Publisher``  *nullable*
+  | Sessions  ``List<Session>``  *nullable*
+  | Duration  ``int``
 :Library:
-  LibraryID  
-  Name  
-  IsCustom  
-  Channels    *nullable*
+  | LibraryID  ``int``
+  | Name  
+  | IsCustom  ``bool``
+  | Channels  ``List<Channel>``  *nullable*
 :LibraryAdvertisement:
-  AdvertisementID  
-  ContentID  
-  LinkUrl  
-  AdBanners    *nullable*
-  Content    *nullable*
+  | AdvertisementID  ``int``
+  | ContentID  ``int``
+  | LinkUrl  
+  | AdBanners    *nullable*
+  | Content    *nullable*
 :Publisher:
-  PublisherID  
-  Name  
-  Summary  
-  WebUrl  
-  ImgUrl  
+  | PublisherID  ``int``
+  | Name  
+  | Summary  
+  | WebUrl  
+  | ImgUrl  
 :RecentlyWatchedSession:
-  ContentID  
-  LastWatchedOn  
-  LastPosition  
-  Content    *nullable*
-  ParentContent    *nullable*
-  IsCompleted  
+  | ContentID  ``int``
+  | LastWatchedOn  ``int``
+  | LastPosition  ``int``
+  | Content  ``Session``  *nullable*
+  | ParentContent  ``Content``  *nullable*
+  | IsCompleted  ``bool``
 :SearchParameters:
 :SearchResults:
-  BibleStudies  
-  KidsSeries  
+  | BibleStudies  ``Channel``
+  | KidsSeries  ``Channel``
 :Series:
-  ContentID  
-  Summary  
-  Title  
-  InQueue  
-  ImgUrl  
-  BannerUrl  
-  Publisher    *nullable*
-  Speaker    *nullable*
-  Supplements    *nullable*
-  Sessions    *nullable*
+  | ContentID  ``int``
+  | Summary  
+  | Title  
+  | InQueue  ``bool``
+  | ImgUrl  
+  | BannerUrl  
+  | Publisher  ``Publisher``  *nullable*
+  | Speaker  ``Speaker``  *nullable*
+  | Supplements  ``List<Supplement>``  *nullable*
+  | Sessions  ``List<Sessions>``  *nullable*
 :Session:
-  Duration  
-  Title  
-  SessionID  
-  SeriesID  
-  ContentID  
-  Sequence    *nullable*
-  Summary  
-  VimeoID  
-  ImgUrl  
-  ContentTypeID  
+  | Duration  ``int``
+  | Title  
+  | SessionID  ``int``
+  | SeriesID  ``int``
+  | ContentID  ``int``
+  | Sequence  ``int``  *nullable*
+  | Summary  
+  | VimeoID  
+  | ImgUrl  
+  | ContentTypeID  ``int``
 :SessionWithProgress:
 :Settings:
-  KidsEnabled  
+  | KidsEnabled  ``bool``
 :Show:
-  ShowID  
-  ContentID  
-  Title  
-  Publisher  
-  ImgUrl  
-  InQueue  
-  Sessions    *nullable*
+  | ShowID  ``int``
+  | ContentID  ``int``
+  | Title  
+  | Publisher  
+  | ImgUrl  
+  | InQueue  ``bool``
+  | Sessions  ``List<Sessions>``  *nullable*
 :Speaker:
-  SpeakerID  
-  FirstName  
-  LastName  
-  Title  
-  Summary  
-  WebUrl  
-  ImgUrl  
+  | SpeakerID  ``int``
+  | FirstName  
+  | LastName  
+  | Title  
+  | Summary  
+  | WebUrl  
+  | ImgUrl  
 :Supplement:
-  SupplementID  
-  Title  
-  Link  
-  Type  
-  Format  
+  | SupplementID  ``int``
+  | Title  
+  | Link  
+  | Type  
+  | Format  
 :User:
-  FirstName  
-  LastName  
-  Email  
-  UserImageUrl  
+  | FirstName  
+  | LastName  
+  | Email  
+  | UserImageUrl  
