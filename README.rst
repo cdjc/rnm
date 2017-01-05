@@ -117,3 +117,60 @@ Data Model
   | LastName  
   | Email  
   | UserImageUrl  
+
+API URLs
+--------
+
+With prefix of ``https://api.rightnow.org/api/media``:
+
+::
+
+"account/logo/" + i)
+"authenticate");
+"user")
+"account")
+"accounts")
+"settings")
+"search/all");
+"content/recentlywatched/add")
+"library/" + Integer.toString(i))
+"library/" + Integer.toString(i) + "/ads")
+"library/all")
+"content/" + Integer.toString(i))
+"library/default")
+"content/series/" + Integer.toString(i) + "?preserveHTML=true")
+"library/default/ads")
+"series/session/" + Integer.toString(i))
+"series/shows")
+"show/session/" + Integer.toString(i))
+"content/queue")
+"session/" + Integer.toString(i) + "/hls")
+"content/recentlywatched")
+"session/" + Integer.toString(i) + "/googlecast")
+"series/shows/" + Integer.toString(i))
+"content/speaker/" + Integer.toString(i))
+"library/custom/" + Integer.toString(i))
+"library/custom/" + Integer.toString(i) + "/banner")
+"content/queue/" + Integer.toString(i))
+"content/queue/remove/" + Integer.toString(i))
+
+
+Authentication
+~~~~~~~~~~~~~~
+
+https://api.rightnow.org/api/media/authenticate
+JSON object with username, password fields
+C1509n.m18888a() builds URL and JSON.
+calls m18868a()
+returns new C36979
+
+
+HTTP Headers
+~~~~~~~~~~~~
+
+::
+
+    Content-Type: application/json; charset=utf-8
+    Accept: application/vnd.rnapi.v4+json   # probably 4
+    Token:
+    AccountIndex:
