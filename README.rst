@@ -155,16 +155,6 @@ With prefix of ``https://api.rightnow.org/api/media``:
 "content/queue/remove/" + Integer.toString(i))
 
 
-Authentication
-~~~~~~~~~~~~~~
-
-https://api.rightnow.org/api/media/authenticate
-JSON object with username, password fields
-C1509n.m18888a() builds URL and JSON.
-calls m18868a()
-returns new C36979
-
-
 HTTP Headers
 ~~~~~~~~~~~~
 
@@ -172,5 +162,37 @@ HTTP Headers
 
     Content-Type: application/json; charset=utf-8
     Accept: application/vnd.rnapi.v4+json   # probably 4
-    Token:
-    AccountIndex:
+    Token: xyz # received when authenticating
+    AccountIndex:  # One of the possible accounts (list received when authenticating. Assume 0 for now)
+
+
+Source Files
+~~~~~~~~~~~~
+
+::
+
+    data/p072a/C3711e.java:139: "Failed to retrieve vimeo url" (class C37102)
+    class C37102 called at C3711e.java:229 in function m19055a
+
+    activities/BibleStudyPlayerActivity.java uses com.google.android.exoplayer.X (media player for android)
+
+    Utilities/C3358d.java:339: "%s: Play video with contentId: %d"
+
+    Utilities/C3343c.java:60:            return "RNM/" + str + " (Linux;Android " + VERSION.RELEASE + ") " + "ExoPlayerLib/" + "1.5.7";
+
+    data/models/CastMetaData.java
+        author
+        contentId
+        imgUrl
+        title
+
+        created in C3358d:414 public CastMetadata m17600c() {
+        and called by C3711e:303 public CastMetadata m19072p() {
+        which is called by activities/C3573d.java:783: and sets    private CastMetadata f11414i; on line 144
+
+        The field is accessed in method m18500a:736:
+            this.f11412g.m18995a(this.f11414i.getContentId(), new C3715g(m2790j(), new C35621(this)));
+        which calls m18995a at C3707c:700
+        which calls m19002c which gets /media/content/<ContentID>
+
+
