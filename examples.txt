@@ -1,0 +1,85 @@
+Library 23 (New and Popular)
+
+Content 204649
+content/sessions/204649 gives these sessions:
+'Sessions': [{'ContentID': 219874,
+               'ContentTypeID': 10,
+               'Duration': 135,
+               'ImgUrl': 'https://d2y24eux71xwor.cloudfront.net/Images/Production/Content/Trailer/219874.jpg',
+               'Sequence': None,
+               'SeriesID': 204649,
+               'SessionID': 219874,
+               'Summary': 'Trailer for Shaken',
+               'Title': 'Series Trailer',
+               'VimeoID': '219874'},
+              {'ContentID': 219877,
+               'ContentTypeID': 5,
+               'Duration': 767,
+               'ImgUrl': 'https://d2y24eux71xwor.cloudfront.net/Images/Production/Content/Session/219877.jpg',
+               'Sequence': 1,
+               'SeriesID': 204649,
+               'SessionID': 219877,
+               'Summary': None,
+               'Title': 'Who Are You?',
+               'VimeoID': '219877'},
+              {'ContentID': 219878,
+               'ContentTypeID': 5,
+               'Duration': 594,
+               'ImgUrl': 'https://d2y24eux71xwor.cloudfront.net/Images/Production/Content/Session/219878.jpg',
+               'Sequence': 2,
+               'SeriesID': 204649,
+               'SessionID': 219878,
+               'Summary': None,
+               'Title': 'When Storms Come',
+               'VimeoID': '219878'},
+              {'ContentID': 219879,
+               'ContentTypeID': 5,
+               'Duration': 639,
+               'ImgUrl': 'https://d2y24eux71xwor.cloudfront.net/Images/Production/Content/Session/219879.jpg',
+               'Sequence': 3,
+               'SeriesID': 204649,
+               'SessionID': 219879,
+               'Summary': None,
+               'Title': 'Others Matter',
+               'VimeoID': '219879'},
+              {'ContentID': 219880,
+               'ContentTypeID': 5,
+               'Duration': 655,
+               'ImgUrl': 'https://d2y24eux71xwor.cloudfront.net/Images/Production/Content/Session/219880.jpg',
+               'Sequence': 4,
+               'SeriesID': 204649,
+               'SessionID': 219880,
+               'Summary': None,
+               'Title': 'A Legacy-Driven Life',
+               'VimeoID': '219880'}],
+
+
+Content 219874
+{'BannerUrl': None,
+ 'ContentID': 219874,
+ 'ContentSourceID': 1,
+ 'ContentTypeID': 10,
+ 'Duration': 135,
+ 'ExternalContentID': '183674312',
+ 'ImgUrl': 'https://d2y24eux71xwor.cloudfront.net/Images/Production/Content/Trailer/219874.jpg',
+ 'Publisher': {'ImgUrl': 'https://d2y24eux71xwor.cloudfront.net/Images/Production/ContentProviders/20.png',
+               'Name': 'RightNow Media',
+               'PublisherID': 20,
+               'Summary': 'Our non-profit ministry is on a mission to '
+                          'encourage millions of Christians to be on mission '
+                          'wherever God has them\xa0Strategically, the best '
+                          'way for RightNow to unleash millions of Christians '
+                          'is to serve churches who can disciple and mobilize '
+                          '“the people of the church” to live like Jesus in '
+                          'their homes, neighborhoods, at work and around the '
+                          'world.At RightNow, we firmly believe The Mission of '
+                          'the Church Matters. Everything we do is rooted in '
+                          'the belief that the church (people not buildings) '
+                          'can have a powerful impact on this world. Our team '
+                          'loves the church.We serve over 10,000 churches each '
+                          'year through our video resources and our '
+                          'conferences.',
+               'WebUrl': 'http://www.rightnowmedia.org'},
+ 'Speaker': None,
+ 'Summary': 'Trailer for Shaken',
+ 'Title': 'Series Trailer'}

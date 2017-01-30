@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon  id="plugin.video.rightnow_media"
+        version="0.1.0"
+        name="RightNow Media"
+        provider-name="__cc__">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <language/>
+        <summary>Kodi RightNow Media Viewer</summary>
+        <description>https://www.rightnowmedia.org/</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <forum></forum>
+        <source></source>
+        <email>carl@free.org.nz</email>
+    </extension>
+</addon>
