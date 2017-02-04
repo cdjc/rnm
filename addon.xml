@@ -1,22 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon  id="plugin.video.rightnow_media"
-        version="0.1.0"
-        name="RightNow Media"
-        provider-name="__cc__">
+<addon id="plugin.video.rightnow-media"
+       version="0.1.0"
+       name="RightNow Media"
+       provider-name="__cc__">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
+        <!--<import addon="script.module.requests" version="2.1.0"/>-->
     </requires>
     <extension point="xbmc.python.pluginsource" library="default.py">
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <language/>
-        <summary>Kodi RightNow Media Viewer</summary>
+        <summary>Unoffical RightNow Media Viewer</summary>
         <description>https://www.rightnowmedia.org/</description>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-        <forum></forum>
-        <source></source>
         <email>carl@free.org.nz</email>
     </extension>
 </addon>
+<!--<?xml version="1.0" encoding="UTF-8" standalone="yes"?>-->
+<!--<addon id="plugin.video.rightnow-media" name="Your Add-on" version="1.2.3" provider-name="You">-->
+  <!--<requires>-->
+    <!--<import addon="xbmc.python" version="2.1.0"/>-->
+  <!--</requires>-->
+  <!--<extension point="xbmc.python.pluginsource" library="default.py">-->
+    <!--<provides>video</provides>-->
+  <!--</extension>-->
+  <!--<extension point="xbmc.addon.metadata">-->
+    <!--<summary lang="en_gb">Your add-on's summary</summary>-->
+    <!--<description lang="en_gb">Your add-on's description</description>-->
+    <!--<disclaimer lang="en_gb"></disclaimer>-->
+    <!--<language></language>-->
+    <!--<platform>all</platform>-->
+    <!--<license></license>-->
+    <!--<forum></forum>-->
+    <!--<website></website>-->
+    <!--<email></email>-->
+    <!--<source></source>-->
+    <!--<news></news>-->
+    <!--<assets>-->
+        <!--<icon></icon>-->
+        <!--<fanart></fanart>-->
+        <!--<screenshot></screenshot>-->
+    <!--</assets>-->
+  <!--</extension>-->
+<!--</addon>-->
+

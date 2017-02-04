@@ -6,8 +6,8 @@ addon_handle = int(sys.argv[1])
 
 xbmcplugin.setContent(addon_handle, 'movies')
 
-url = 'http://localhost/some_video.mkv'
-li = xbmcgui.ListItem('My First Video!', iconImage='DefaultVideo.png')
+url = 'http://www.vidsplay.com/vids/pizza.mp4'
+li = xbmcgui.ListItem('My First Videooo', iconImage='DefaultVideo.png')
 xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li)
 
 xbmcplugin.endOfDirectory(addon_handle)
