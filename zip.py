@@ -8,14 +8,14 @@ zfile = build+'.zip'
 
 files = [
     'addon.xml',
-    # 'auth.py',
+    'auth.py',
     'changelog.txt',
     'default.py',
     'LICENSE.txt',
     'readme.txt',
     'icon.png',
     'fanart.jpg',
-
+    'DO_NOT_COMMIT'
 ]
 
 shutil.rmtree(build,ignore_errors=True)

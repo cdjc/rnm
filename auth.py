@@ -1,8 +1,16 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import sys
 import time
 import requests
 import json
+
+try:
+    import xbmc
+    log = xbmc.log
+except:
+    def log(msg):
+        print >> sys.stderr,msg
+
 
 base = 'https://api.rightnow.org/api/media/'
 
@@ -42,9 +50,9 @@ def POST(url, params=None, raw=False):
         return None
     if raw:
         return raw_reply
-    reply = json.loads(raw_reply.content.decode())
+    reply = json.loads(raw_reply.content.decode('utf-8'))
     if 'Message' in reply:
-        print('Message: ' + reply['Message'], file=sys.stderr)
+        log('Message: ' + reply['Message'])
     return reply
 
 
@@ -79,11 +87,11 @@ class Model:
                     setattr(self, key, full_value)
                 else:  # is_list
                     if type(value) != list:
-                        print('Expected a list for key ' + key + ' in model ' + self.__name__, file=sys.stderr)
+                        log('Expected a list for key ' + key + ' in model ' + self.__name__)
                         continue
                     list_type = attr_type[0]
-                    #print(' list of', list_type)
-                    is_model_list = type(list_type) == type and issubclass(list_type, Model)
+                    #is_model_list = type(list_type) == type and issubclass(list_type, Model)
+                    is_model_list = issubclass(list_type, Model)
                     list_value = []
                     for raw_value in value:
                         if not is_model_list:
