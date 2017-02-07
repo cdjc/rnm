@@ -99,9 +99,12 @@ def list_channel(libraryId, channelId):
 
 def list_content(contentId):
     content = API(url_sessions+contentId)
-    for sessiond in content['Sessions']:
-        session = defaultdict(lambda: '', sessiond)
+
+    def _add_play_item(d):
+        session = defaultdict(lambda: '', d)
         sessionId = session['SessionID']
+        if sessionId == '':
+            sessionId = session['ContentID']
         name = session['Title']
         summary = session['Summary']
         duration = session['Duration']
@@ -113,14 +116,21 @@ def list_content(contentId):
         info = {'plot' : summary, 'duration' : duration}
         item.setInfo('video', info)
         is_folder = False
-        url = get_url(action='play', session=sessionId)
+        url = get_url(action='play', session=sessionId, title=name)
         xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
+    # If there are no sessions, the contentID is the sessionID
+    for sessiond in content['Sessions']:
+        _add_play_item(sessiond)
+    if not content['Sessions']:
+        _add_play_item(content)
+
     xbmcplugin.endOfDirectory(_handle)
 
-def play_session(sessionId):
+def play_session(sessionId, title):
     # if this 404s, kodi 16.1 crashes with a segfault :-(
     url = API(url_play+sessionId+'/hls')
-    xbmc.Player().play(url)
+    item = xbmcgui.ListItem(label=title)
+    xbmc.Player().play(url, listitem=item)
     #item = xbmcgui.ListItem(path=url)
     #xbmcplugin.setResolvedUrl(_handle, True, listitem=item)
 
@@ -217,7 +227,7 @@ def router(paramstring):
         elif params['action'] == 'content':
             list_content(params['content'])
         elif params['action'] == 'play':
-            play_session(params['session'])
+            play_session(params['session'], params['title'])
         else:
             # If the provided paramstring does not contain a supported action
             # we raise an exception. This helps to catch coding errors,
