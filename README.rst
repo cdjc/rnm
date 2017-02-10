@@ -166,3 +166,9 @@ HTTP Headers
     AccountIndex:  # One of the possible accounts (list received when authenticating. Assume index 0 for now)
 
 
+TODO
+~~~~
+
+ * Speaker info
+ * Publisher info
+ * Download supplemental info?

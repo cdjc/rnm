@@ -116,7 +116,7 @@ def list_content(contentId):
         info = {'plot' : summary, 'duration' : duration}
         item.setInfo('video', info)
         is_folder = False
-        url = get_url(action='play', session=sessionId, title=name)
+        url = get_url(action='play', session=sessionId, title=name.encode('utf-8'))
         xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
     # If there are no sessions, the contentID is the sessionID
     for sessiond in content['Sessions']:
