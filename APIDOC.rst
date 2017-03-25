@@ -166,16 +166,6 @@ HTTP Headers
     AccountIndex:  # One of the possible accounts (list received when authenticating. Assume index 0 for now)
 
 
-TODO
-~~~~
-
- * Speaker info
- * Publisher info
- * Download supplemental info?
- * Search
- * Custom Libraries
- * 'Courses' (Christian Living -> Answers in Theology - The Gospel Coalition -> The Disciplines of Abiding 187852, ContentTypeID 3)
-    (Christian Living -> Answers in Theology - The Gospel Coalition -> Should Christians Tithe 186221, ContentTypeID 2)
 
 ContentTypeID
 ~~~~~~~~~~~~~
