@@ -154,7 +154,7 @@ def API(url, params=None, raw=False):
         if raw_reply.status_code == 401:
             error("401", "email or password incorrect")
     if raw_reply.status_code != 200:
-        log('URL ' + url + ' returned status code ' + str(raw_reply.status_code) + 'with content:' + raw_reply.content.decode())
+        log('URL ' + url + ' returned status code ' + str(raw_reply.status_code) + ':' + raw_reply.content.decode())
         for k in sorted(raw_reply.headers):
             log(k + ":" + raw_reply.headers[k])
         return None

@@ -172,3 +172,31 @@ TODO
  * Speaker info
  * Publisher info
  * Download supplemental info?
+ * Search
+ * Custom Libraries
+ * 'Courses' (Christian Living -> Answers in Theology - The Gospel Coalition -> The Disciplines of Abiding 187852, ContentTypeID 3)
+    (Christian Living -> Answers in Theology - The Gospel Coalition -> Should Christians Tithe 186221, ContentTypeID 2)
+
+ContentTypeID
+~~~~~~~~~~~~~
+
+:11:
+ | Plays (1080 & SD. Short?)
+:4:
+ | Plays (SD/720)
+:9:
+ | 404 (Conference?)
+:2:
+ | 404 (Collection?)
+:3:
+ | 404 (No duration) Collection? (course?)
+:1:
+ | Collection (of 5's and 10?)
+:5:
+ | Plays (not related to time or quality)
+:7:
+ | Collection (of 8's?)
+:8:
+ | Plays (not related to time or quality)
+:10:
+ | Plays. Trailer.
