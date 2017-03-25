@@ -3,8 +3,8 @@ Unofficial RightNow Media Kodi plugin
 
 This Kodi plugin is not endorsed by RightNow Media. Please don't contact them for support.
 
-It was created by reverse engineering the web API calls made by the Android Kodi app
-and is freely available and modifiable. Any code contributions welcome.
+It was created by reverse engineering the web API calls made by the Android RightNowMedia app.
+This plugin is freely available and modifiable. Any code contributions welcome.
 
 License
 -------
