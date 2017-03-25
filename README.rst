@@ -3,7 +3,24 @@ Unofficial RightNow Media Kodi plugin
 
 This Kodi plugin is not endorsed by RightNow Media. Please don't contact them for support.
 
-It was created by reverse engineering the web API calls made by the Android Kodi app.
+It was created by reverse engineering the web API calls made by the Android Kodi app
+and is freely available and modifiable. Any code contributions welcome.
+
+License
+-------
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Installation
 ------------
@@ -23,12 +40,18 @@ Installation
 TODO
 ----
 
- * Speaker info
- * Publisher info
- * Download supplemental info?
- * Search
- * Member Church information
- * Custom Libraries
- * 'Courses' (Christian Living -> Answers in Theology - The Gospel Coalition -> The Disciplines of Abiding 187852, ContentTypeID 3)
-    (Christian Living -> Answers in Theology - The Gospel Coalition -> Should Christians Tithe 186221, ContentTypeID 2)
-    I think these are only available through the website.
+* Speaker info
+* Publisher info
+* Download supplemental info?
+* Search
+* Member Church information
+* Custom Libraries
+* 'Courses' (Christian Living -> Answers in Theology - The Gospel Coalition -> The Disciplines of Abiding 187852, ContentTypeID 3)
+  (Christian Living -> Answers in Theology - The Gospel Coalition -> Should Christians Tithe 186221, ContentTypeID 2)
+  I think these are only available through the website.
+
+
+Irony
+-----
+
+My internet connection speed is so poor, most of the time I can't stream the content without frequent pauses!

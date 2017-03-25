@@ -9,6 +9,7 @@ from urllib import urlencode
 from urlparse import parse_qsl
 from collections import defaultdict
 
+
 def log(msg):
     xbmc.log("RNM PLUGIN:"+msg)
 
@@ -22,7 +23,7 @@ url_library_all = base + 'library/all'
 url_library = base + 'library/'  # + id
 url_content = base + 'content/'  # + id
 url_sessions = base + 'content/series/'  # + id
-url_play = base + '/session/' # + id + '/hls'
+url_play = base + '/session/'  # + id + '/hls'
 
 
 _url = sys.argv[0]
@@ -41,27 +42,30 @@ def get_url(**kwargs):
     """
     return '{0}?{1}'.format(_url, urlencode(kwargs))
 
+
 def list_libraries():
     libs = API(url_library_all)
     for lib in libs:
-        item = xbmcgui.ListItem(label = lib['Name'])
+        item = xbmcgui.ListItem(label=lib['Name'])
         url = get_url(action='library', id=lib['LibraryID'])
         is_folder = True
         xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
 
-def list_library(id):
-    lib = API(url_library+id)
+
+def list_library(lid):
+    lib = API(url_library+lid)
     for chan in lib['Channels']:
         name = chan['Name']
         chan_id = chan['ChannelID']
         is_folder = True
-        url = get_url(action='channel',library=id,channel=chan_id)
-        item = xbmcgui.ListItem(label = name)
+        url = get_url(action='channel', library=lid, channel=chan_id)
+        item = xbmcgui.ListItem(label=name)
         xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
+
 
 def list_channel(libraryId, channelId):
     lib = API(url_library + libraryId)
@@ -97,6 +101,7 @@ def list_channel(libraryId, channelId):
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
 
+
 def list_content(contentId):
     content = API(url_sessions+contentId)
 
@@ -105,7 +110,11 @@ def list_content(contentId):
         sessionId = session['SessionID']
         if sessionId == '':
             sessionId = session['ContentID']
+
         name = session['Title']
+        type_id = session['ContentTypeID']
+        if type_id in (2, 3, 9):  # See the APIDOC.rst for a guess at the meaning.
+            name = '[web only] '+name
         summary = session['Summary']
         duration = session['Duration']
         thumb = session['ImgUrl']
