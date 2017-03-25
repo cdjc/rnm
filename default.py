@@ -16,6 +16,10 @@ def log(msg):
 addon = xbmcaddon.Addon()
 
 HEADERS = {'Content-type': 'application/json; charset=utf-8',
+           'Connection': 'Keep-Alive',
+           'Accept-Encoding': 'gzip',
+           'Host': 'api.rightnow.org',
+           'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 6.0.1)',
            'Accept': 'application/vnd.rnapi.v4+json'}
 base = 'https://api.rightnow.org/api/media/'
 url_auth = base + 'authenticate'
@@ -169,22 +173,28 @@ def API(url, params=None, raw=False):
         return None
     if raw:
         return raw_reply
-    reply = json.loads(raw_reply.content.decode('utf-8'))
+    try:
+        reply = json.loads(raw_reply.content.decode('utf-8'))
+    except ValueError, e:
+        log('Json decode error '+ str(e) )
+        log('Content is: '+raw_reply)
+        return None
 
     if 'Message' in reply:
         log('Message: ' + reply['Message'])
     return reply
 
-def setTokenHeader(token):
+def setTokenHeader(token, account_id):
     HEADERS['Token'] = token
-    HEADERS['AccountIndex'] = '0'
+    HEADERS['AccountIndex'] = account_id
 
 def ensure_token():
     global HEADERS
     token = addon.getSetting('token')
-    if token:
+    account_id = addon.getSetting('church_id')
+    if token and account_id:
         #log('Found token: ' + token)
-        setTokenHeader(token)
+        setTokenHeader(token, account_id)
         return True
     return authenticate()
 
@@ -207,7 +217,9 @@ def authenticate():
     token = reply['token']
     #log('new auth token:'+token)
     addon.setSetting('token',token)
-    setTokenHeader(token)
+    account_id = str(reply['accounts'][0]['ChurchId'])
+    addon.setSetting('church_id', account_id)
+    setTokenHeader(token, account_id)
     return True
 
 def error(title, msg):

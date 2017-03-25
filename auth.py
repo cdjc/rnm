@@ -24,6 +24,11 @@ url_settings = base + 'settings'
 url_content = base + 'content/'  # + id
 
 HEADERS = {'Content-type': 'application/json; charset=utf-8',
+           'Connection' : 'Keep-Alive',
+           'Accept-Encoding' : 'gzip',
+           'AccountIndex' : '4199486',
+           'Host' : 'api.rightnow.org',
+           'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 6.0.1)',
            'Accept': 'application/vnd.rnapi.v4+json'}
 
 token = None
@@ -37,7 +42,7 @@ def POST(url, params=None, raw=False):
     """
     if token and 'token' not in HEADERS:
         HEADERS['Token'] = token
-        HEADERS['AccountIndex'] = '0'
+        #HEADERS['AccountIndex'] = '0'
     if params is None:
         raw_reply = requests.get(url, headers=HEADERS)
     else:
@@ -199,6 +204,7 @@ class Data:
     def authenticate(self, user, pswd):
         self.top_level = TopLevel()
         reply = POST(url_auth, {'username': user, 'password': pswd})
+        print(reply)
         if reply is None:
             return
         self.top_level.create(reply)

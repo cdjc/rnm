@@ -46,6 +46,7 @@ TODO
 * Search
 * Member Church information
 * Custom Libraries
+* Supplements (Popular Teachers -> Francis Chan -> Surrender)
 * 'Courses' (Christian Living -> Answers in Theology - The Gospel Coalition -> The Disciplines of Abiding 187852, ContentTypeID 3)
   (Christian Living -> Answers in Theology - The Gospel Coalition -> Should Christians Tithe 186221, ContentTypeID 2)
   I think these are only available through the website.
