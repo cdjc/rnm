@@ -27,12 +27,12 @@ Installation
 
 1. Download plugin.video.rightnow-media.zip
 2. Put the zip file somewhere where Kodi can see it.
-3. From the min Kodi interface go to System -> Settings -> Install from zip file
+3. From the main Kodi interface go to System -> Settings -> Install from zip file
 4. Select the zip file to install
 5. Click on My add-ons -> Video add-ons -> RightNow media
 6. Click Configure
 7. Add your credentials for authenticating with RightNow Media
-8. Your email/password are only stored locally on the Kodi device. A programmer can verify this by looking at the freely available source code.
+8. Your email/password are only stored locally on the Kodi device; I don't harvest them. A programmer can verify this by looking at the freely available source code.
 9. RightNow Media plugin can now be used from the Videos -> Add-ons tab of the home screen
 10. God bless!
 
