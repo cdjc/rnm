@@ -26,6 +26,7 @@ url_auth = base + 'authenticate'
 url_library_all = base + 'library/all'
 url_library = base + 'library/'  # + id
 url_content = base + 'content/'  # + id
+url_channel = base + "channel/"  # + id
 url_sessions = base + 'content/series/'  # + id
 url_play = base + '/session/'  # + id + '/hls'
 
@@ -64,44 +65,42 @@ def list_library(lid):
         name = chan['Name']
         chan_id = chan['ChannelID']
         is_folder = True
-        url = get_url(action='channel', library=lid, channel=chan_id)
+        url = get_url(action='channel', channel=chan_id)
         item = xbmcgui.ListItem(label=name)
         xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
 
 
-def list_channel(libraryId, channelId):
-    lib = API(url_library + libraryId)
-    for chan in lib['Channels']:
-        chan_id = chan['ChannelID']
-        if chan_id == int(channelId):
-            for content in chan['Content']:
-                name = content['Title']
-                contentId = content['ContentID']
-                item = xbmcgui.ListItem(label=name)
-                art = {}
-                if 'ImgUrl' in content:
-                    art['thumb'] = content['ImgUrl']
-                if 'BannerURL' in content:
-                    art['banner'] = content['BannerURL']
+def list_channel(channelId):
+    lib = API(url_channel + channelId)
+    log("Channel" + str(lib))
+    for content in lib['Content']:
+        name = content['Title']
+        contentId = content['ContentID']
+        item = xbmcgui.ListItem(label=name)
+        art = {}
+        if 'ImgUrl' in content:
+            art['thumb'] = content['ImgUrl']
+        if 'BannerURL' in content:
+            art['banner'] = content['BannerURL']
 
-                item.setArt(art)
+        item.setArt(art)
 
-                info = {}
-                if 'Summary' in content:
-                    info['plot'] = content['Summary']
-                if 'Publisher' in content and type(content['Publisher']) is dict and 'Name' in content['Publisher']:
-                    info['studio'] = content['Publisher']['Name']
-                if 'Speaker' in content:
-                    speaker = content['Speaker']
-                    if type(speaker) is dict and 'FirstName' in speaker and 'LastName' in speaker:
-                        info['artist'] = [speaker['FirstName'] + ' ' + speaker['LastName']]
+        info = {}
+        if 'Summary' in content:
+            info['plot'] = content['Summary']
+        if 'Publisher' in content and type(content['Publisher']) is dict and 'Name' in content['Publisher']:
+            info['studio'] = content['Publisher']['Name']
+        if 'Speaker' in content:
+            speaker = content['Speaker']
+            if type(speaker) is dict and 'FirstName' in speaker and 'LastName' in speaker:
+                info['artist'] = [speaker['FirstName'] + ' ' + speaker['LastName']]
 
-                item.setInfo('video', info)
-                is_folder = True
-                url = get_url(action='content', content=contentId)
-                xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
+        item.setInfo('video', info)
+        is_folder = True
+        url = get_url(action='content', content=contentId)
+        xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
 
@@ -118,7 +117,7 @@ def list_content(contentId):
         name = session['Title']
         type_id = session['ContentTypeID']
         if type_id in (2, 3, 9):  # See the APIDOC.rst for a guess at the meaning.
-            name = '[web only] '+name
+            name = '[web only] ' + name
         summary = session['Summary']
         duration = session['Duration']
         thumb = session['ImgUrl']
@@ -244,7 +243,7 @@ def router(paramstring):
         if params['action'] == 'library':
             list_library(params['id'])
         elif params['action'] == 'channel':
-            list_channel(params['library'],params['channel'])
+            list_channel(params['channel'])
         elif params['action'] == 'content':
             list_content(params['content'])
         elif params['action'] == 'play':
