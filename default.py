@@ -74,7 +74,7 @@ def list_library(lid):
 
 def list_channel(channelId):
     lib = API(url_channel + channelId)
-    log("Channel" + str(lib))
+    #log("Channel" + str(lib))
     for content in lib['Content']:
         name = content['Title']
         contentId = content['ContentID']
