@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 import xbmc
 import xbmcgui
@@ -61,13 +62,14 @@ def list_libraries():
 
 def list_library(lid):
     lib = API(url_library+lid)
-    for chan in lib['Channels']:
-        name = chan['Name']
-        chan_id = chan['ChannelID']
-        is_folder = True
-        url = get_url(action='channel', channel=chan_id)
-        item = xbmcgui.ListItem(label=name)
-        xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
+    if lib is not None:
+        for chan in lib['Channels']:
+            name = chan['Name']
+            chan_id = chan['ChannelID']
+            is_folder = True
+            url = get_url(action='channel', channel=chan_id)
+            item = xbmcgui.ListItem(label=name)
+            xbmcplugin.addDirectoryItem(_handle, url, item, is_folder)
     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_handle)
 
