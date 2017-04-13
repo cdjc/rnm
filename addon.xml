@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.rightnow-media"
-       version="1.0.0"
+       version="1.0.1"
        name="RightNow Media"
        provider-name="__cc__">
     <requires>
