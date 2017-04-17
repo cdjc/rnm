@@ -2,3 +2,4 @@
 1.0.1 Make channel listing more efficient - davegermiquet
 1.0.2 Stop custom library from giving error. It's just empty instead - cdjc
 1.0.3 Implemented search functionality - davegermiquet
+1.0.4 Updated Content ID to error out if content id is missing
