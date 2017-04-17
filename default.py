@@ -335,12 +335,12 @@ def play_web_session(url_from_search, content_id_from_search):
     if returnReg is None:
         returnReg = re.search(".+var contentId = ([0-9]+);.*",url_response.text)
     if returnReg is None:
-        pass
+        xbmcgui.Dialog().ok("Status","Could not load video, link was missing")
     else:
         content_id = returnReg.group(1)
-    url = sessionInstance.makeRequest("https://www.rightnowmedia.org/Media/Player",{"contentId": str(content_id),'showPoster' : 'false' },True,HEADERSFORPLAYER)
-    videolink = re.search("source src=\"(.+?)\"",url.text).group(1)
-    xbmc.Player().play(videolink)
+        url = sessionInstance.makeRequest("https://www.rightnowmedia.org/Media/Player",{"contentId": str(content_id),'showPoster' : 'false' },True,HEADERSFORPLAYER)
+        videolink = re.search("source src=\"(.+?)\"",url.text).group(1)
+        xbmc.Player().play(videolink)
 
 def play_session(sessionId, title):
     # if this 404s, kodi 16.1 crashes with a segfault :-(
