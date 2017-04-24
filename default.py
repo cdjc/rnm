@@ -69,8 +69,8 @@ class SessionRequests():
             log('Content is: '+raw_reply)
             return None
 
-            if 'Message' in reply:
-                log('Message: ' + reply['Message'])
+        if 'Message' in reply:
+            log('Message: ' + reply['Message'])
         return reply
 
 class SearchHTMLScraper(HTMLParser):
@@ -159,7 +159,7 @@ url_web_login = url_web_base + '/Account/Login'
 base = 'https://api.rightnow.org/api/media/'
 url_auth = base + 'authenticate'
 url_library_all = base + 'library/all'
-url_library = base + 'library/'  # + id
+url_library = base + 'library/'  # + ['custom/'] + id      # use 'custom' for custom libraries only
 url_content = base + 'content/'  # + id
 url_channel = base + "channel/"  # + id
 url_sessions = base + 'content/series/'  # + id
@@ -190,15 +190,16 @@ def list_libraries():
     libs = API(url_library_all)
     for lib in libs:
         item = xbmcgui.ListItem(label=lib['Name'])
-        url = get_url(action='library', id=lib['LibraryID'])
+        url = get_url(action='library', id=lib['LibraryID'], iscustom=lib['IsCustom'])
         is_folder = True
         xbmcplugin.addDirectoryItem(_kodihandle, url, item, is_folder)
     xbmcplugin.addSortMethod(_kodihandle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_kodihandle)
 
 
-def list_library(lid):
-    lib = API(url_library+lid)
+def list_library(lid, is_custom):
+    custom_string = '' if is_custom=='False' else 'custom/'
+    lib = API(url_library+custom_string+lid)
     if lib is not None:
         for chan in lib['Channels']:
             name = chan['Name']
@@ -214,32 +215,33 @@ def list_library(lid):
 def list_channel(channelId):
     lib = API(url_channel + channelId)
     #log("Channel" + str(lib))
-    for content in lib['Content']:
-        name = content['Title']
-        contentId = content['ContentID']
-        item = xbmcgui.ListItem(label=name)
-        art = {}
-        if 'ImgUrl' in content:
-            art['thumb'] = content['ImgUrl']
-        if 'BannerURL' in content:
-            art['banner'] = content['BannerURL']
+    if lib is not None:
+        for content in lib['Content']:
+            name = content['Title']
+            contentId = content['ContentID']
+            item = xbmcgui.ListItem(label=name)
+            art = {}
+            if 'ImgUrl' in content:
+                art['thumb'] = content['ImgUrl']
+            if 'BannerURL' in content:
+                art['banner'] = content['BannerURL']
 
-        item.setArt(art)
+            item.setArt(art)
 
-        info = {}
-        if 'Summary' in content:
-            info['plot'] = content['Summary']
-        if 'Publisher' in content and type(content['Publisher']) is dict and 'Name' in content['Publisher']:
-            info['studio'] = content['Publisher']['Name']
-        if 'Speaker' in content:
-            speaker = content['Speaker']
-            if type(speaker) is dict and 'FirstName' in speaker and 'LastName' in speaker:
-                info['artist'] = [speaker['FirstName'] + ' ' + speaker['LastName']]
+            info = {}
+            if 'Summary' in content:
+                info['plot'] = content['Summary']
+            if 'Publisher' in content and type(content['Publisher']) is dict and 'Name' in content['Publisher']:
+                info['studio'] = content['Publisher']['Name']
+            if 'Speaker' in content:
+                speaker = content['Speaker']
+                if type(speaker) is dict and 'FirstName' in speaker and 'LastName' in speaker:
+                    info['artist'] = [speaker['FirstName'] + ' ' + speaker['LastName']]
 
-        item.setInfo('video', info)
-        is_folder = True
-        url = get_url(action='content', content=contentId)
-        xbmcplugin.addDirectoryItem(_kodihandle, url, item, is_folder)
+            item.setInfo('video', info)
+            is_folder = True
+            url = get_url(action='content', content=contentId)
+            xbmcplugin.addDirectoryItem(_kodihandle, url, item, is_folder)
     xbmcplugin.addSortMethod(_kodihandle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     xbmcplugin.endOfDirectory(_kodihandle)
 
@@ -358,7 +360,6 @@ def API(url, params=None, raw=False, headers = HEADERS):
     :param params: dictionary of params (If this is set, will use POST, otherwise GET)
     :return: dictionary of results
     """
-
     if params is None:
         #log(url)
         #log(str(HEADERS))
@@ -384,7 +385,7 @@ def API(url, params=None, raw=False, headers = HEADERS):
         reply = json.loads(raw_reply.content.decode('utf-8'))
     except ValueError, e:
         log('Json decode error '+ str(e) )
-        log('Content is: '+raw_reply)
+        log('Content is: '+raw_reply.content.decode('utf-8'))
         return None
 
     if 'Message' in reply:
@@ -480,6 +481,7 @@ def router(paramstring):
     :param paramstring: URL encoded plugin paramstring
     :type paramstring: str
     """
+    log(paramstring)
     # Parse a URL-encoded paramstring to the dictionary of
     # {<parameter>: <value>} elements
     params = dict(parse_qsl(paramstring))
@@ -489,7 +491,7 @@ def router(paramstring):
         if not ensure_token():
             return
         if params['action'] == 'library':
-            list_library(params['id'])
+            list_library(params['id'], params['iscustom'])
         elif params['action'] == 'channel':
             list_channel(params['channel'])
         elif params['action'] == 'content':

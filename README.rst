@@ -43,7 +43,7 @@ TODO
 * Speaker info
 * Publisher info
 * Download supplemental info?
-* Search
+* Kids
 * Member Church information
 * Custom Libraries
 * Supplements (Popular Teachers -> Francis Chan -> Surrender)
