@@ -22,6 +22,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+Features
+--------
+
+Simple alphabetical and hierarchical arrangement - no animations or ads.
+
+* Search (WiP)
+* Custom libraries
+
 Installation
 ------------
 
@@ -45,7 +53,6 @@ TODO
 * Download supplemental info?
 * Kids
 * Member Church information
-* Custom Libraries
 * Supplements (Popular Teachers -> Francis Chan -> Surrender)
 * 'Courses' (Christian Living -> Answers in Theology - The Gospel Coalition -> The Disciplines of Abiding 187852, ContentTypeID 3)
   (Christian Living -> Answers in Theology - The Gospel Coalition -> Should Christians Tithe 186221, ContentTypeID 2)
